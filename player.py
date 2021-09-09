@@ -36,8 +36,5 @@ class Player(object):
     
     # Print
     def __str__(self):
-        return "(" + str(self.name) + ", " + str(self.status) + ", " + "£{:,}".format(self.wage) + ")"
-
-# player = Player("Giorgio Addessi", "Star Player", "£6,250 p/w")
-# print(player.__str__())
+        return str(self.name) + ", " + str(self.status) + ", " + "£{:,}".format(self.wage)
 
