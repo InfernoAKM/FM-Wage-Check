@@ -9,11 +9,20 @@ def main():
     status_list = status_split(objects)
 
     print("----------\nKey Players\n----------")
+    print("Max wage: " + "£{:,}".format(wage_split[0]) + "\n----------")
     print_status(status_list, 0)
     print("----------\nFirst Team\n----------")
+    print("Max wage: " + "£{:,}".format(wage_split[1]) + "\n----------")
     print_status(status_list, 1)
     print("----------\nBackup\n----------")
+    print("Max wage: " + "£{:,}".format(wage_split[2]) + "\n----------")
     print_status(status_list, 2)
+
+    print("\n----------\nOverpaid\n----------")
+    print("The following players are over budget for their playing time:\n")
+    for n in range(0,3):
+        for player in status_list[n]:
+            check_overpaid(player, wage_split[n])
 
 
 def create_list(file):
@@ -61,5 +70,9 @@ def status_split(objects):
 def print_status(status_list, n):
     for player in status_list[n]:
         print(player.__str__())
+
+def check_overpaid(player, max_wage):
+    if player.get_wage() > max_wage:
+        return print(player.__str__())
 
 main()
